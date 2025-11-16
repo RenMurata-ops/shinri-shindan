@@ -57,6 +57,11 @@ export interface Stage1Results {
       lucky_action: string;
     };
   };
+  similar_historical_figures: Array<{
+    name: string;
+    description: string;
+    reason: string;
+  }>;
   message: string;
 }
 

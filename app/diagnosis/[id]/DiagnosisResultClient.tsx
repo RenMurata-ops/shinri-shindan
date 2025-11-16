@@ -261,11 +261,39 @@ export default function DiagnosisResultClient({ diagnosis }: DiagnosisResultClie
           </div>
         </motion.section>
 
-        {/* 3 Month Fortune */}
+        {/* Similar Historical Figures */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
+          className="glass-strong rounded-3xl p-8 mb-16"
+        >
+          <h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-2">
+            <Users className="w-6 h-6 text-yellow-400" />
+            あなたと似た魂を持つ偉人たち
+          </h2>
+          <p className="text-gray-400 mb-6">
+            歴史上の偉人の中で、あなたと似た診断結果を持つ方々です。彼らの生き方から学びのヒントが見つかるかもしれません。
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {results.similar_historical_figures.map((figure, index) => (
+              <div key={index} className="glass rounded-2xl p-6">
+                <h3 className="text-xl font-bold mb-2 text-yellow-300">{figure.name}</h3>
+                <p className="text-sm text-gray-400 mb-3">{figure.description}</p>
+                <div className="pt-3 border-t border-white/10">
+                  <p className="text-xs text-gray-500 mb-1">共通点</p>
+                  <p className="text-sm text-gray-300">{figure.reason}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* 3 Month Fortune */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
           className="glass-strong rounded-3xl p-8 mb-16"
         >
           <h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-2">
@@ -330,7 +358,7 @@ export default function DiagnosisResultClient({ diagnosis }: DiagnosisResultClie
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
+          transition={{ delay: 0.9 }}
           className="glass-strong rounded-3xl p-8 mb-16"
         >
           <h2 className="text-2xl font-display font-bold mb-6">あなたへのメッセージ</h2>
@@ -343,7 +371,7 @@ export default function DiagnosisResultClient({ diagnosis }: DiagnosisResultClie
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9 }}
+          transition={{ delay: 1.0 }}
           className="text-center glass-strong rounded-3xl p-12"
         >
           <h2 className="text-3xl font-display font-bold mb-4">
