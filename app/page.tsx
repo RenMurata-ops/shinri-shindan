@@ -33,20 +33,20 @@ export default function Home() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full">
             <Sparkles className="w-4 h-4 text-purple-400" />
-            <span className="text-sm text-purple-200">あなたの心を知る旅へ</span>
+            <span className="text-sm text-purple-200">あなたの真理を知る旅へ</span>
           </div>
 
           {/* Title */}
           <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
             <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent leading-tight">
-              心理診断
+              真理診断
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
             深層心理を探り、真の自分と向き合う<br className="hidden sm:block" />
-            スピリチュアルな心理診断の世界へようこそ
+            スピリチュアルな真理診断の世界へようこそ
           </p>
 
           {/* CTA Buttons */}
@@ -66,7 +66,7 @@ export default function Home() {
               href="/about"
               className="px-8 py-4 rounded-full glass hover:glass-strong transition-all duration-300 text-lg font-medium"
             >
-              心理診断とは？
+              真理診断とは？
             </Link>
           </div>
 
@@ -103,7 +103,7 @@ export default function Home() {
       <footer className="relative z-10 border-t border-white/10 mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center text-sm text-gray-400">
-            <p>© 2025 心理診断. All rights reserved.</p>
+            <p>© 2025 真理診断. All rights reserved.</p>
           </div>
         </div>
       </footer>

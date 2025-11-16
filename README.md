@@ -1,6 +1,6 @@
-# 心理診断 (Shinri Shindan)
+# 真理診断 (Shinri Shindan)
 
-深層心理を探る、スピリチュアルな心理診断プラットフォーム
+深層心理を探り、真理へと導くスピリチュアルな診断プラットフォーム
 
 ## Features
 
@@ -31,4 +31,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## License
 
-© 2025 心理診断. All rights reserved.
+© 2025 真理診断. All rights reserved.

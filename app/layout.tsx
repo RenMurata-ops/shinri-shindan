@@ -13,8 +13,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "心理診断 - あなたの心を知る旅",
-  description: "深層心理を探る、スピリチュアルな心理診断",
+  title: "真理診断 - あなたの真理を知る旅",
+  description: "深層心理を探り、真理へと導くスピリチュアルな診断",
 };
 
 export default function RootLayout({
