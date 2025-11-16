@@ -163,6 +163,7 @@ JSON以外の文字を含めないでください。`;
     const supabase = createServerSupabaseClient();
     const diagnosisId = uuidv4();
 
+    // @ts-ignore - Supabase type inference issue
     const { error: insertError } = await supabase.from('diagnoses').insert({
       id: diagnosisId,
       last_name,

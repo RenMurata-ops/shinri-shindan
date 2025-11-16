@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
 
     if (existingCode) {
       return NextResponse.json({
-        code: existingCode.code,
+        code: (existingCode as any).code,
         message: 'シリアルコードが既に発行されています',
       });
     }
@@ -84,6 +84,7 @@ export async function POST(request: NextRequest) {
     }
 
     // シリアルコードを保存
+    // @ts-ignore - Supabase type inference issue
     const { error: insertError } = await supabase.from('serial_codes').insert({
       code,
       diagnosis_id,
