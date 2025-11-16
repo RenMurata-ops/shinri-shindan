@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Loader2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
 
 interface FormData {
   lastName: string;
@@ -31,6 +31,7 @@ export default function QuestionPage() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [formData, setFormData] = useState<FormData>({
     lastName: '',
     firstName: '',
@@ -44,6 +45,23 @@ export default function QuestionPage() {
     coreValue: '',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // 進捗バーのアニメーション
+  useEffect(() => {
+    if (isSubmitting) {
+      setProgress(0);
+      const interval = setInterval(() => {
+        setProgress(prev => {
+          if (prev >= 90) {
+            clearInterval(interval);
+            return 90;
+          }
+          return prev + Math.random() * 15;
+        });
+      }, 500);
+      return () => clearInterval(interval);
+    }
+  }, [isSubmitting]);
 
   const updateField = (field: keyof FormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -132,6 +150,8 @@ export default function QuestionPage() {
       const data = await response.json();
 
       if (response.ok) {
+        setProgress(100);
+        await new Promise(resolve => setTimeout(resolve, 500));
         router.push(`/diagnosis/${data.diagnosis_id}`);
       } else {
         throw new Error(data.error || '診断の生成に失敗しました');
@@ -140,10 +160,11 @@ export default function QuestionPage() {
       console.error('診断エラー:', error);
       alert('診断の生成に失敗しました。もう一度お試しください。');
       setIsSubmitting(false);
+      setProgress(0);
     }
   };
 
-  const progress = ((currentStep + 1) / 6) * 100;
+  const stepProgress = ((currentStep + 1) / 6) * 100;
 
   const stepperVariants = {
     enter: (direction: number) => ({
@@ -160,6 +181,78 @@ export default function QuestionPage() {
     }),
   };
 
+  // レポート作成中の画面
+  if (isSubmitting) {
+    return (
+      <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center px-4">
+        {/* Background */}
+        <div className="fixed inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-pink-900/20 animate-gradient" />
+          <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center max-w-2xl"
+        >
+          <Sparkles className="w-20 h-20 mx-auto mb-6 text-purple-400 animate-pulse-glow" />
+
+          <h2 className="text-3xl sm:text-4xl font-display font-bold mb-4">
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              現在レポートを作成しています
+            </span>
+          </h2>
+
+          <p className="text-lg text-gray-300 mb-12">
+            宇宙の叡智を読み解き、あなたの真理を紐解いています...
+          </p>
+
+          {/* Progress Bar */}
+          <div className="w-full max-w-md mx-auto">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-sm font-medium text-purple-300">解析中</span>
+              <span className="text-sm text-gray-400">{Math.round(progress)}%</span>
+            </div>
+            <div className="w-full h-3 bg-gray-800 rounded-full overflow-hidden">
+              <motion.div
+                className="h-full bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 bg-[length:200%_100%] animate-gradient"
+                initial={{ width: 0 }}
+                animate={{ width: `${progress}%` }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              />
+            </div>
+          </div>
+
+          <div className="mt-8 space-y-2 text-sm text-gray-400">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: progress > 20 ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              ✨ 魂のアーキタイプを分析中...
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: progress > 50 ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              🌟 真理の星座を解読中...
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: progress > 75 ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              🎨 天命の色を導き出し中...
+            </motion.p>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-950 flex flex-col">
       {/* Background */}
@@ -172,13 +265,13 @@ export default function QuestionPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium">質問 {currentStep + 1}/6</span>
-            <span className="text-sm text-gray-400">{Math.round(progress)}%</span>
+            <span className="text-sm text-gray-400">{Math.round(stepProgress)}%</span>
           </div>
           <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
             <motion.div
               className="h-full bg-gradient-to-r from-purple-500 to-pink-500"
               initial={{ width: 0 }}
-              animate={{ width: `${progress}%` }}
+              animate={{ width: `${stepProgress}%` }}
               transition={{ duration: 0.3 }}
             />
           </div>
@@ -427,20 +520,10 @@ export default function QuestionPage() {
 
             <button
               onClick={handleNext}
-              disabled={isSubmitting}
-              className="px-8 py-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-8 py-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all flex items-center gap-2"
             >
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                  診断中...
-                </>
-              ) : (
-                <>
-                  {currentStep === 5 ? '診断する' : '次へ'}
-                  <ArrowRight className="w-5 h-5" />
-                </>
-              )}
+              {currentStep === 5 ? '診断する' : '次へ'}
+              <ArrowRight className="w-5 h-5" />
             </button>
           </div>
         </div>
