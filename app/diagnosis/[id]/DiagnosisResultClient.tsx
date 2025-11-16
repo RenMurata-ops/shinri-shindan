@@ -354,11 +354,43 @@ export default function DiagnosisResultClient({ diagnosis }: DiagnosisResultClie
           </div>
         </motion.section>
 
-        {/* Message */}
+        {/* Core Philosophy */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9 }}
+          className="glass-strong rounded-3xl p-8 mb-16"
+        >
+          <h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-2">
+            <Brain className="w-6 h-6 text-blue-400" />
+            核とする考え方
+          </h2>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl font-semibold mb-3 text-blue-300">{results.core_philosophy.title}</h3>
+              <p className="text-gray-300 leading-relaxed">{results.core_philosophy.description}</p>
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold text-gray-400 mb-3">根本的な信念</h4>
+              <div className="space-y-3">
+                {results.core_philosophy.key_beliefs.map((belief, index) => (
+                  <div key={index} className="flex items-start gap-3 glass rounded-xl p-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                      <span className="text-blue-400 font-bold text-sm">{index + 1}</span>
+                    </div>
+                    <p className="text-gray-300 pt-1">{belief}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Message */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.0 }}
           className="glass-strong rounded-3xl p-8 mb-16"
         >
           <h2 className="text-2xl font-display font-bold mb-6">あなたへのメッセージ</h2>
@@ -371,7 +403,7 @@ export default function DiagnosisResultClient({ diagnosis }: DiagnosisResultClie
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0 }}
+          transition={{ delay: 1.1 }}
           className="text-center glass-strong rounded-3xl p-12"
         >
           <h2 className="text-3xl font-display font-bold mb-4">

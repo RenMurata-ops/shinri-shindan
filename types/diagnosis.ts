@@ -62,6 +62,11 @@ export interface Stage1Results {
     description: string;
     reason: string;
   }>;
+  core_philosophy: {
+    title: string;
+    description: string;
+    key_beliefs: string[];
+  };
   message: string;
 }
 
