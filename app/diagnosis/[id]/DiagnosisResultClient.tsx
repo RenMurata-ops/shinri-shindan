@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
-import { Sparkles, Heart, Users, TrendingUp, Share2, Download } from 'lucide-react';
+import { Sparkles, Heart, Users, TrendingUp, Share2, Download, Brain } from 'lucide-react';
 import type { Stage1Results } from '@/types/diagnosis';
 
 interface DiagnosisResultClientProps {
@@ -262,129 +262,135 @@ export default function DiagnosisResultClient({ diagnosis }: DiagnosisResultClie
         </motion.section>
 
         {/* Similar Historical Figures */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-          className="glass-strong rounded-3xl p-8 mb-16"
-        >
-          <h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-2">
-            <Users className="w-6 h-6 text-yellow-400" />
-            あなたと似た魂を持つ偉人たち
-          </h2>
-          <p className="text-gray-400 mb-6">
-            歴史上の偉人の中で、あなたと似た診断結果を持つ方々です。彼らの生き方から学びのヒントが見つかるかもしれません。
-          </p>
-          <div className="grid md:grid-cols-3 gap-6">
-            {results.similar_historical_figures.map((figure, index) => (
-              <div key={index} className="glass rounded-2xl p-6">
-                <h3 className="text-xl font-bold mb-2 text-yellow-300">{figure.name}</h3>
-                <p className="text-sm text-gray-400 mb-3">{figure.description}</p>
-                <div className="pt-3 border-t border-white/10">
-                  <p className="text-xs text-gray-500 mb-1">共通点</p>
-                  <p className="text-sm text-gray-300">{figure.reason}</p>
+        {results.similar_historical_figures && (
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+            className="glass-strong rounded-3xl p-8 mb-16"
+          >
+            <h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-2">
+              <Users className="w-6 h-6 text-yellow-400" />
+              あなたと似た魂を持つ偉人たち
+            </h2>
+            <p className="text-gray-400 mb-6">
+              歴史上の偉人の中で、あなたと似た診断結果を持つ方々です。彼らの生き方から学びのヒントが見つかるかもしれません。
+            </p>
+            <div className="grid md:grid-cols-3 gap-6">
+              {results.similar_historical_figures.map((figure, index) => (
+                <div key={index} className="glass rounded-2xl p-6">
+                  <h3 className="text-xl font-bold mb-2 text-yellow-300">{figure.name}</h3>
+                  <p className="text-sm text-gray-400 mb-3">{figure.description}</p>
+                  <div className="pt-3 border-t border-white/10">
+                    <p className="text-xs text-gray-500 mb-1">共通点</p>
+                    <p className="text-sm text-gray-300">{figure.reason}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </motion.section>
+              ))}
+            </div>
+          </motion.section>
+        )}
 
         {/* 3 Month Fortune */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="glass-strong rounded-3xl p-8 mb-16"
-        >
-          <h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-2">
-            <TrendingUp className="w-6 h-6 text-purple-400" />
-            今後3ヶ月の運勢
-          </h2>
-          <div className="grid gap-6">
-            <div className="glass rounded-2xl p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-sm font-semibold">1ヶ月目</span>
-                <h3 className="text-xl font-bold">{results.three_month_fortune.month1.title}</h3>
+        {results.three_month_fortune && (
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            className="glass-strong rounded-3xl p-8 mb-16"
+          >
+            <h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-2">
+              <TrendingUp className="w-6 h-6 text-purple-400" />
+              今後3ヶ月の運勢
+            </h2>
+            <div className="grid gap-6">
+              <div className="glass rounded-2xl p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-sm font-semibold">1ヶ月目</span>
+                  <h3 className="text-xl font-bold">{results.three_month_fortune.month1.title}</h3>
+                </div>
+                <p className="text-gray-300 mb-3">{results.three_month_fortune.month1.description}</p>
+                <div className="flex items-start gap-2 text-sm">
+                  <span className="text-yellow-400 font-semibold whitespace-nowrap">幸運の行動：</span>
+                  <span className="text-gray-400">{results.three_month_fortune.month1.lucky_action}</span>
+                </div>
               </div>
-              <p className="text-gray-300 mb-3">{results.three_month_fortune.month1.description}</p>
-              <div className="flex items-start gap-2 text-sm">
-                <span className="text-yellow-400 font-semibold whitespace-nowrap">幸運の行動：</span>
-                <span className="text-gray-400">{results.three_month_fortune.month1.lucky_action}</span>
+
+              <div className="glass rounded-2xl p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-sm font-semibold">2ヶ月目</span>
+                  <h3 className="text-xl font-bold">{results.three_month_fortune.month2.title}</h3>
+                </div>
+                <p className="text-gray-300 mb-3">{results.three_month_fortune.month2.description}</p>
+                <div className="flex items-start gap-2 text-sm">
+                  <span className="text-yellow-400 font-semibold whitespace-nowrap">幸運の行動：</span>
+                  <span className="text-gray-400">{results.three_month_fortune.month2.lucky_action}</span>
+                </div>
+              </div>
+
+              <div className="glass rounded-2xl p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 text-sm font-semibold">3ヶ月目</span>
+                  <h3 className="text-xl font-bold">{results.three_month_fortune.month3.title}</h3>
+                </div>
+                <p className="text-gray-300 mb-3">{results.three_month_fortune.month3.description}</p>
+                <div className="flex items-start gap-2 text-sm">
+                  <span className="text-yellow-400 font-semibold whitespace-nowrap">幸運の行動：</span>
+                  <span className="text-gray-400">{results.three_month_fortune.month3.lucky_action}</span>
+                </div>
               </div>
             </div>
 
-            <div className="glass rounded-2xl p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-sm font-semibold">2ヶ月目</span>
-                <h3 className="text-xl font-bold">{results.three_month_fortune.month2.title}</h3>
-              </div>
-              <p className="text-gray-300 mb-3">{results.three_month_fortune.month2.description}</p>
-              <div className="flex items-start gap-2 text-sm">
-                <span className="text-yellow-400 font-semibold whitespace-nowrap">幸運の行動：</span>
-                <span className="text-gray-400">{results.three_month_fortune.month2.lucky_action}</span>
-              </div>
-            </div>
-
-            <div className="glass rounded-2xl p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 text-sm font-semibold">3ヶ月目</span>
-                <h3 className="text-xl font-bold">{results.three_month_fortune.month3.title}</h3>
-              </div>
-              <p className="text-gray-300 mb-3">{results.three_month_fortune.month3.description}</p>
-              <div className="flex items-start gap-2 text-sm">
-                <span className="text-yellow-400 font-semibold whitespace-nowrap">幸運の行動：</span>
-                <span className="text-gray-400">{results.three_month_fortune.month3.lucky_action}</span>
+            <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-purple-900/30 to-pink-900/30 border border-purple-500/20">
+              <div className="flex items-start gap-3">
+                <Sparkles className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-lg font-bold mb-2 text-purple-200">1年間の詳細な運勢を知りたい方へ</h3>
+                  <p className="text-gray-300 text-sm mb-3">
+                    LINE公式アカウントに登録すると、12ヶ月分の詳細な運勢予測、月ごとのラッキーカラー、開運アクション、避けるべき行動など、さらに深い洞察をご覧いただけます。
+                  </p>
+                  <p className="text-purple-300 text-sm font-semibold">
+                    ※下のシリアルコード発行ボタンからLINE登録へ進めます
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-purple-900/30 to-pink-900/30 border border-purple-500/20">
-            <div className="flex items-start gap-3">
-              <Sparkles className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-lg font-bold mb-2 text-purple-200">1年間の詳細な運勢を知りたい方へ</h3>
-                <p className="text-gray-300 text-sm mb-3">
-                  LINE公式アカウントに登録すると、12ヶ月分の詳細な運勢予測、月ごとのラッキーカラー、開運アクション、避けるべき行動など、さらに深い洞察をご覧いただけます。
-                </p>
-                <p className="text-purple-300 text-sm font-semibold">
-                  ※下のシリアルコード発行ボタンからLINE登録へ進めます
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.section>
+          </motion.section>
+        )}
 
         {/* Core Philosophy */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9 }}
-          className="glass-strong rounded-3xl p-8 mb-16"
-        >
-          <h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-2">
-            <Brain className="w-6 h-6 text-blue-400" />
-            核とする考え方
-          </h2>
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-xl font-semibold mb-3 text-blue-300">{results.core_philosophy.title}</h3>
-              <p className="text-gray-300 leading-relaxed">{results.core_philosophy.description}</p>
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold text-gray-400 mb-3">根本的な信念</h4>
-              <div className="space-y-3">
-                {results.core_philosophy.key_beliefs.map((belief, index) => (
-                  <div key={index} className="flex items-start gap-3 glass rounded-xl p-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
-                      <span className="text-blue-400 font-bold text-sm">{index + 1}</span>
+        {results.core_philosophy && (
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9 }}
+            className="glass-strong rounded-3xl p-8 mb-16"
+          >
+            <h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-2">
+              <Brain className="w-6 h-6 text-blue-400" />
+              核とする考え方
+            </h2>
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-xl font-semibold mb-3 text-blue-300">{results.core_philosophy.title}</h3>
+                <p className="text-gray-300 leading-relaxed">{results.core_philosophy.description}</p>
+              </div>
+              <div>
+                <h4 className="text-sm font-semibold text-gray-400 mb-3">根本的な信念</h4>
+                <div className="space-y-3">
+                  {results.core_philosophy.key_beliefs.map((belief, index) => (
+                    <div key={index} className="flex items-start gap-3 glass rounded-xl p-4">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                        <span className="text-blue-400 font-bold text-sm">{index + 1}</span>
+                      </div>
+                      <p className="text-gray-300 pt-1">{belief}</p>
                     </div>
-                    <p className="text-gray-300 pt-1">{belief}</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </motion.section>
+          </motion.section>
+        )}
 
         {/* Message */}
         <motion.section
