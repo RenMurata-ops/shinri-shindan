@@ -231,21 +231,21 @@ export default function QuestionPage() {
               animate={{ opacity: progress > 20 ? 1 : 0 }}
               transition={{ duration: 0.5 }}
             >
-              ✨ 魂のアーキタイプを分析中...
+              魂のアーキタイプを分析中...
             </motion.p>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: progress > 50 ? 1 : 0 }}
               transition={{ duration: 0.5 }}
             >
-              🌟 真理の星座を解読中...
+              真理の星座を解読中...
             </motion.p>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: progress > 75 ? 1 : 0 }}
               transition={{ duration: 0.5 }}
             >
-              🎨 天命の色を導き出し中...
+              天命の色を導き出し中...
             </motion.p>
           </div>
         </motion.div>
