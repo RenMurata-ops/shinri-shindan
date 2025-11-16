@@ -90,10 +90,20 @@ JSON以外の文字を含めないでください。`;
 
     const content = message.content[0];
     if (content.type !== 'text') {
+      console.error('Unexpected response type:', content.type);
       throw new Error('Unexpected response type from Claude');
     }
 
-    const stage1Results = JSON.parse(content.text);
+    console.log('Claude API Response:', content.text);
+
+    let stage1Results;
+    try {
+      stage1Results = JSON.parse(content.text);
+    } catch (parseError) {
+      console.error('JSON Parse Error:', parseError);
+      console.error('Raw response:', content.text);
+      throw new Error('診断結果のパースに失敗しました');
+    }
 
     // データベースに保存
     const supabase = createServerSupabaseClient();
@@ -125,8 +135,12 @@ JSON以外の文字を含めないでください。`;
     });
   } catch (error) {
     console.error('Diagnosis error:', error);
+    const errorMessage = error instanceof Error ? error.message : '診断の生成に失敗しました';
     return NextResponse.json(
-      { error: '診断の生成に失敗しました' },
+      {
+        error: errorMessage,
+        details: error instanceof Error ? error.stack : String(error)
+      },
       { status: 500 }
     );
   }

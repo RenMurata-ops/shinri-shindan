@@ -3,46 +3,53 @@ import { Sparkles, Heart, Brain, Stars, Users, TrendingUp, Shield } from 'lucide
 import { ARCHETYPES, TRUTH_STARS, TALENT_DOMAINS } from '@/types/diagnosis';
 
 export const metadata = {
-  title: '真理診断とは？ - 13の占術を統合した最高精度の診断',
-  description: '古代から伝わる東洋・西洋の13の占術を統合し、AI技術で再構築した世界最高精度の性格診断システムです。',
+  title: '真理診断とは？ - 宇宙の叡智で魂の本質を読み解く',
+  description: '真理探究占星は、あなたが生まれた瞬間の宇宙のエネルギーを読み解き、魂の本質、人生の使命、未来の可能性を明らかにします。',
 };
 
-const fortuneTypes = [
-  { name: '西洋占星術', icon: <Stars className="w-6 h-6" />, description: '星座と惑星の配置から運命を読み解く' },
-  { name: '数秘術', icon: <Brain className="w-6 h-6" />, description: '生年月日と名前の数字から本質を解明' },
-  { name: '九星気学', icon: <Sparkles className="w-6 h-6" />, description: '東洋の叡智で方位と運勢を診断' },
-  { name: '動物占い', icon: <Heart className="w-6 h-6" />, description: '12の動物タイプで性格を分類' },
-  { name: '誕生日占い', icon: <Stars className="w-6 h-6" />, description: '366日それぞれの特性を分析' },
-  { name: '姓名判断', icon: <Brain className="w-6 h-6" />, description: '名前の画数から運勢を読む' },
-  { name: '四柱推命', icon: <Sparkles className="w-6 h-6" />, description: '生年月日時から人生の流れを予測' },
-  { name: 'タロット', icon: <Stars className="w-6 h-6" />, description: '象徴的なカードで潜在意識を探る' },
-  { name: 'MBTI', icon: <Users className="w-6 h-6" />, description: '16のタイプで性格を分析' },
-  { name: 'エニアグラム', icon: <Heart className="w-6 h-6" />, description: '9つのタイプで深層心理を解明' },
-  { name: 'ビッグファイブ', icon: <Brain className="w-6 h-6" />, description: '5つの特性で性格を数値化' },
-  { name: 'カラー診断', icon: <Sparkles className="w-6 h-6" />, description: '色彩心理学で内面を分析' },
-  { name: '干支占い', icon: <Stars className="w-6 h-6" />, description: '12支で性格と相性を読み解く' },
+const spiritualPrinciples = [
+  {
+    title: '宇宙のエネルギー',
+    icon: <Stars className="w-6 h-6" />,
+    description: 'あなたが生まれた瞬間の宇宙の配置が、魂に刻まれた使命を示します'
+  },
+  {
+    title: '数の神秘',
+    icon: <Brain className="w-6 h-6" />,
+    description: '名前と生年月日に秘められた数字の波動が、あなたの本質を物語ります'
+  },
+  {
+    title: '魂の色彩',
+    icon: <Sparkles className="w-6 h-6" />,
+    description: 'あなた固有の色のエネルギーが、人生の方向性を照らし出します'
+  },
+  {
+    title: '時の流れ',
+    icon: <TrendingUp className="w-6 h-6" />,
+    description: '誕生の瞬間に流れていた時間の質が、人生のリズムを決定します'
+  },
 ];
 
 const faqs = [
   {
     question: '診断は本当に無料ですか？',
-    answer: '第一段階の診断は完全無料です。より詳しい第二・第三段階の診断を見るには、LINE公式アカウントに登録してシリアルコードを発行する必要があります。'
+    answer: '第一段階の真理の啓示は完全無料です。さらに深い魂の洞察をご希望の方は、LINE公式アカウントに登録してシリアルコードを発行いただくことで、第二・第三段階の深遠な真理をご覧いただけます。'
   },
   {
     question: '診断にはどれくらい時間がかかりますか？',
-    answer: '質問は全部で6問、約3分で完了します。診断結果は質問に答えた直後にご覧いただけます。'
+    answer: '宇宙との対話は約3分で完了します。6つの質問に答えることで、あなたの魂の本質が即座に明らかになります。'
   },
   {
-    question: 'なぜ13の占術を統合しているのですか？',
-    answer: '一つの占いでは見えない、あなたの多面的な本質を浮き彫りにするためです。数千年の叡智を統合することで、驚異的な的中率を実現しています。'
+    question: 'なぜこんなに正確に当たるのですか？',
+    answer: '真理探究占星は、あなたが生まれた瞬間の宇宙のエネルギー配置を読み解きます。宇宙の法則は不変であり、そこに嘘はありません。あなたの魂に刻まれた真実をありのままにお伝えするため、驚くほどの的中率を実現しています。'
   },
   {
     question: '生まれた時間が分からなくても診断できますか？',
-    answer: 'はい、できます。生まれた時間は必須ではありませんが、入力いただくとより精度の高い診断が可能になります。'
+    answer: 'はい、できます。生まれた時間は、より精緻な宇宙の配置を読み解くために役立ちますが、必須ではありません。生年月日とお名前だけでも、十分に深い真理を明らかにすることができます。'
   },
   {
     question: '何度でも診断できますか？',
-    answer: 'はい、何度でも診断可能です。ただし、診断結果は生年月日などの基本情報に基づくため、同じ情報であれば同じ結果になります。'
+    answer: 'はい、何度でもお試しいただけます。ただし、あなたの魂の本質は変わりませんので、同じ情報で診断すれば同じ真理が示されます。それは、宇宙があなたに伝え続けているメッセージなのです。'
   },
 ];
 
@@ -80,9 +87,9 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              古代から伝わる東洋・西洋の13の占術を統合し、<br className="hidden sm:block" />
-              最新のAI技術で再構築した<br className="hidden sm:block" />
-              世界最高精度の性格診断システムです
+              宇宙の叡智と魂の波動を読み解き、<br className="hidden sm:block" />
+              あなたの本質、使命、そして未来への道筋を<br className="hidden sm:block" />
+              スピリチュアルな視点から明らかにします
             </p>
           </div>
         </div>
@@ -103,50 +110,51 @@ export default function AboutPage() {
 
             <div className="order-1 md:order-2">
               <h2 className="text-3xl sm:text-4xl font-display font-bold mb-6">
-                真理探究占星
+                真理探究占星とは
               </h2>
               <p className="text-lg text-gray-300 mb-4">
-                真理探究占星は、13種類の伝統的占術を
-                独自のアルゴリズムで統合した診断システムです。
+                真理探究占星は、あなたが生まれた瞬間に宇宙から降り注いだ
+                エネルギーの配置を読み解く、古代からの神秘的な叡智です。
               </p>
               <p className="text-lg text-gray-300 mb-4">
-                一つの占いでは見えない、
-                あなたの多面的な本質を浮き彫りにします。
+                生年月日、名前、そして生まれた時刻に秘められた
+                宇宙の暗号を解読することで、
+                あなたの魂が持つ本来の輝きを明らかにします。
               </p>
               <p className="text-lg text-gray-300">
-                数千年の叡智と最新技術の融合により、
-                驚異的な的中率を実現しています。
+                それは単なる性格診断ではなく、
+                魂の設計図を読み解く神聖な儀式なのです。
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Fortune Types Section */}
+      {/* Spiritual Principles Section */}
       <section className="relative py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-center mb-16">
-            統合された13の占術
+          <h2 className="text-3xl sm:text-4xl font-display font-bold text-center mb-6">
+            真理を読み解く4つの柱
           </h2>
+          <p className="text-lg text-gray-300 text-center max-w-3xl mx-auto mb-16">
+            真理探究占星は、宇宙の普遍的な法則に基づいて<br className="hidden sm:block" />
+            あなたの魂の本質を多角的に照らし出します
+          </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {fortuneTypes.map((fortune, index) => (
-              <div key={index} className="glass p-6 rounded-2xl hover:glass-strong transition-all duration-300">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="text-purple-400">
-                    {fortune.icon}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {spiritualPrinciples.map((principle, index) => (
+              <div key={index} className="glass-strong p-8 rounded-3xl hover:scale-105 transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="p-3 rounded-full glass text-purple-400">
+                    {principle.icon}
                   </div>
-                  <h3 className="text-lg font-semibold">{fortune.name}</h3>
+                  <h3 className="text-2xl font-display font-bold">{principle.title}</h3>
                 </div>
-                <p className="text-sm text-gray-400">{fortune.description}</p>
+                <p className="text-gray-300 leading-relaxed">
+                  {principle.description}
+                </p>
               </div>
             ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <p className="text-sm text-gray-500">
-              ※これらの占術を独自の用語体系に変換し、「真理探究占星」として提供しています
-            </p>
           </div>
         </div>
       </section>
@@ -155,20 +163,21 @@ export default function AboutPage() {
       <section className="relative py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-center mb-6">
-            独自の用語体系
+            魂の言語で伝える真理
           </h2>
           <p className="text-lg text-gray-300 text-center max-w-3xl mx-auto mb-16">
-            従来の占い用語ではなく、<br className="sm:hidden" />
-            誰にでも分かりやすい独自の表現を採用しています
+            難解な専門用語ではなく、<br className="sm:hidden" />
+            あなたの魂に直接響く言葉で真理をお伝えします
           </p>
 
           <div className="space-y-12">
             {/* Archetypes */}
             <div className="glass-strong rounded-3xl p-8">
-              <h3 className="text-2xl font-display font-bold mb-4">12のアーキタイプ</h3>
+              <h3 className="text-2xl font-display font-bold mb-4">12の魂の原型</h3>
               <p className="text-gray-300 mb-6">
-                あなたの基本的な性格タイプを12種類に分類。
-                創造者、探求者、戦士など、イメージしやすい名前で表現します。
+                宇宙には12の魂のパターンが存在します。
+                あなたがどの原型の魂を持って生まれたかを明らかにし、
+                その神聖な役割をお伝えします。
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
                 {ARCHETYPES.map((archetype) => (
@@ -183,8 +192,9 @@ export default function AboutPage() {
             <div className="glass-strong rounded-3xl p-8">
               <h3 className="text-2xl font-display font-bold mb-4">9つの真理の星座</h3>
               <p className="text-gray-300 mb-6">
-                あなたの核となる動機を9つの星で表現。
-                完璧の星、愛情の星、知恵の星など。
+                あなたの魂を導く星の光を読み解きます。
+                9つの星座は、それぞれが異なる真理を象徴し、
+                あなたの人生に深い意味をもたらします。
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {TRUTH_STARS.map((star) => (
@@ -203,7 +213,9 @@ export default function AboutPage() {
             <div className="glass-strong rounded-3xl p-8">
               <h3 className="text-2xl font-display font-bold mb-4">五大本質エレメント</h3>
               <p className="text-gray-300 mb-6">
-                探究、秩序、交流、調和、感受の5つの要素であなたのバランスを可視化。
+                宇宙を構成する5つの根源的エネルギー。
+                あなたの魂がどの波動と共鳴しているかを視覚化し、
+                エネルギーバランスの神秘を明らかにします。
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-5 gap-4">
                 {['探究', '秩序', '交流', '調和', '感受'].map((element) => (
