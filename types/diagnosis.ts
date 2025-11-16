@@ -40,6 +40,23 @@ export interface Stage1Results {
     growth: string[];
     stimulus: string[];
   };
+  three_month_fortune: {
+    month1: {
+      title: string;
+      description: string;
+      lucky_action: string;
+    };
+    month2: {
+      title: string;
+      description: string;
+      lucky_action: string;
+    };
+    month3: {
+      title: string;
+      description: string;
+      lucky_action: string;
+    };
+  };
   message: string;
 }
 

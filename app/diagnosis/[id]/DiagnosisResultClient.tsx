@@ -261,11 +261,76 @@ export default function DiagnosisResultClient({ diagnosis }: DiagnosisResultClie
           </div>
         </motion.section>
 
-        {/* Message */}
+        {/* 3 Month Fortune */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
+          className="glass-strong rounded-3xl p-8 mb-16"
+        >
+          <h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-2">
+            <TrendingUp className="w-6 h-6 text-purple-400" />
+            今後3ヶ月の運勢
+          </h2>
+          <div className="grid gap-6">
+            <div className="glass rounded-2xl p-6">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-sm font-semibold">1ヶ月目</span>
+                <h3 className="text-xl font-bold">{results.three_month_fortune.month1.title}</h3>
+              </div>
+              <p className="text-gray-300 mb-3">{results.three_month_fortune.month1.description}</p>
+              <div className="flex items-start gap-2 text-sm">
+                <span className="text-yellow-400 font-semibold whitespace-nowrap">幸運の行動：</span>
+                <span className="text-gray-400">{results.three_month_fortune.month1.lucky_action}</span>
+              </div>
+            </div>
+
+            <div className="glass rounded-2xl p-6">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-sm font-semibold">2ヶ月目</span>
+                <h3 className="text-xl font-bold">{results.three_month_fortune.month2.title}</h3>
+              </div>
+              <p className="text-gray-300 mb-3">{results.three_month_fortune.month2.description}</p>
+              <div className="flex items-start gap-2 text-sm">
+                <span className="text-yellow-400 font-semibold whitespace-nowrap">幸運の行動：</span>
+                <span className="text-gray-400">{results.three_month_fortune.month2.lucky_action}</span>
+              </div>
+            </div>
+
+            <div className="glass rounded-2xl p-6">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 text-sm font-semibold">3ヶ月目</span>
+                <h3 className="text-xl font-bold">{results.three_month_fortune.month3.title}</h3>
+              </div>
+              <p className="text-gray-300 mb-3">{results.three_month_fortune.month3.description}</p>
+              <div className="flex items-start gap-2 text-sm">
+                <span className="text-yellow-400 font-semibold whitespace-nowrap">幸運の行動：</span>
+                <span className="text-gray-400">{results.three_month_fortune.month3.lucky_action}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-purple-900/30 to-pink-900/30 border border-purple-500/20">
+            <div className="flex items-start gap-3">
+              <Sparkles className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="text-lg font-bold mb-2 text-purple-200">1年間の詳細な運勢を知りたい方へ</h3>
+                <p className="text-gray-300 text-sm mb-3">
+                  LINE公式アカウントに登録すると、12ヶ月分の詳細な運勢予測、月ごとのラッキーカラー、開運アクション、避けるべき行動など、さらに深い洞察をご覧いただけます。
+                </p>
+                <p className="text-purple-300 text-sm font-semibold">
+                  ※下のシリアルコード発行ボタンからLINE登録へ進めます
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Message */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
           className="glass-strong rounded-3xl p-8 mb-16"
         >
           <h2 className="text-2xl font-display font-bold mb-6">あなたへのメッセージ</h2>
@@ -278,7 +343,7 @@ export default function DiagnosisResultClient({ diagnosis }: DiagnosisResultClie
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
+          transition={{ delay: 0.9 }}
           className="text-center glass-strong rounded-3xl p-12"
         >
           <h2 className="text-3xl font-display font-bold mb-4">
@@ -286,7 +351,7 @@ export default function DiagnosisResultClient({ diagnosis }: DiagnosisResultClie
           </h2>
           <p className="text-lg text-gray-300 mb-8">
             第二・第三段階の診断で、あなたの深層心理、無意識のパターン、<br className="hidden sm:block" />
-            人生のテーマ、3年間の運勢予測などを詳しく解析します
+            人生のテーマ、3年間の運勢予測、そして12ヶ月間の詳細な運勢などを解析します
           </p>
           <button
             onClick={handleGenerateSerialCode}
